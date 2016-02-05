@@ -1,0 +1,11 @@
+# Git ignore file - this file defines files to not be added to the repository
+
+# Components installed
+node_modules
+
+# Sass cache not included
+.sass-cache
+
+# Sublime project files
+*.sublime-project
+*.sublime-workspace
