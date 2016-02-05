@@ -3,9 +3,14 @@ joose.utils = (function(js) {
     
     "use strict";
 
+    // private shared variables
     var classList;
 
-    // check if an element has a class
+    /*
+        CHECK IF AN ELEMENT HAS A CLASS
+        @param ELEM             [element]   the element to check the class of
+        @param CLASSTOCHECK     [string]    the class to check for
+    */
     var hasClass = function(elem, classToCheck) {
 
         // check arguments have been supplied
@@ -18,7 +23,7 @@ joose.utils = (function(js) {
         classList = elem.getAttribute('class');
 
         // if the element has a class attribute
-        if (classList != null) {
+        if (classList !== null) {
 
             // setup and run the check for the class
             var classRegex = new RegExp('(^| )(' + classToCheck + ')( |$)');
@@ -27,11 +32,16 @@ joose.utils = (function(js) {
 
         // otherwise the element has no classes
         } else {
+            classList = "";
             return false;
         }
     };
 
-    // add a class to an element if it doesn't have it already
+    /*
+        ADD A CLASS TO AN ELEMENT IF IT DOESN'T HAVE IT ALREADY
+        @param ELEM             [element]   the element to add the class to
+        @param CLASSTOADD       [string]    the class to add
+    */
     var addClass = function(elem, classToAdd) {
 
         // check the elem doesn't already have the class and cancel if it does
@@ -44,7 +54,11 @@ joose.utils = (function(js) {
         elem.setAttribute('class', (classList + leadingSpace + classToAdd));
     };
 
-    // remove a class from an element if it has the class
+    /*
+        REMOVE A CLASS FROM AN ELEMENT IF IT HAS THE CLASS
+        @param ELEM             [element]   the element to remove the class from
+        @param CLASSTOREMOVE    [string]    the class to remove
+    */
     var removeClass = function(elem, classToRemove) {
 
         // check the elem has the class and cancel if it doesn't
@@ -71,7 +85,11 @@ joose.utils = (function(js) {
         elem.setAttribute('class', classList);
     };
 
-    // add the class if it doesn't have it, if it does, remove it
+    /*
+        ADD THE CLASS IF THE ELEMENT DOESN'T HAVE IT, IF IT DOES, REMOVE IT
+        @param ELEM             [element]   the element to toggle the class on
+        @param CLASSTOTOGGLE    [string]    the class to toggle
+    */
     var toggleClass = function(elem, classToToggle) {
 
         // check whether the element has the class
@@ -88,6 +106,7 @@ joose.utils = (function(js) {
         }
     }
 
+    // public methods
     return {
         hasClass: hasClass,
         addClass: addClass,
