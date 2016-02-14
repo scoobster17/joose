@@ -2,12 +2,15 @@
 
 # Components installed / written as part of this library
 bower_components/
-node_modules/
 components/
-
-# Sass cache not included
-.sass-cache
+node_modules/
 
 # Sublime project files
 *.sublime-project
 *.sublime-workspace
+
+# development tools / resources
+.sass-cache/
+css/
+gulpfile.js
+index.html
