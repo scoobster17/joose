@@ -24,7 +24,14 @@ For HTML-based components, on page load the script searches the page for the `da
 
 ## Components
 
-  * [accordion](https://github.com/scoobster17/joose-accordion); a lightweight, unstyled accordion component
-  * [storage](https://github.com/scoobster17/joose-storage); storage helper functions for dealing with cookies, sessionStorage and localStorage
-  * [tabs](https://github.com/scoobster17/joose-tabs); a lightweight, unstyled tabset component
-  * [utils](https://github.com/scoobster17/joose-utils); utility helper functions including class handling
+  * [accordion](https://github.com/scoobster17/joose-accordion)  
+    a lightweight, unstyled accordion component
+
+  * [storage](https://github.com/scoobster17/joose-storage)  
+    storage helper functions for dealing with cookies, sessionStorage and localStorage
+
+  * [tabs](https://github.com/scoobster17/joose-tabs)  
+    a lightweight, unstyled tabset component
+
+  * [utils](https://github.com/scoobster17/joose-utils)  
+    utility helper functions including class handling
