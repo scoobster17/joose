@@ -1,5 +1,5 @@
 {
-  "name": "joose",
+  "name": "joose-cl",
   "description": "The joose component library, containing vanilla JS components, lightweight and flexible, open to customisation",
   "main": "js/setup.js",
   "authors": [
