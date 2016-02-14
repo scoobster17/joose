@@ -22,6 +22,12 @@
     "test",
     "tests"
   ],
+  "dependencies": {
+    "joose-utils": "*",
+    "joose-accordion": "*",
+    "joose-tabs": "*",
+    "joose-storage": "*"
+  },
   "devDependencies": {
     "joose-utils": "*",
     "joose-accordion": "*",
