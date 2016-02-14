@@ -1,0 +1,31 @@
+{
+  "name": "joose",
+  "description": "The joose component library, containing vanilla JS components, lightweight and flexible, open to customisation",
+  "main": "js/setup.js",
+  "authors": [
+    "Phil Gibbins <scoobster17@hotmail.co.uk> (http://www.philgibbins.com)"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "joose",
+    "component",
+    "components",
+    "library",
+    "javascript"
+  ],
+  "homepage": "https://github.com/scoobster17/joose",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "joose-utils": "*",
+    "joose-accordion": "*",
+    "joose-tabs": "*",
+    "joose-storage": "*"
+  }
+}

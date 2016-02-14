@@ -1,8 +1,9 @@
 # Git ignore file - this file defines files to not be added to the repository
 
 # Components installed / written as part of this library
-node_modules
-components
+bower_components/
+node_modules/
+components/
 
 # Sass cache not included
 .sass-cache
