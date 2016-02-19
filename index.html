@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Joose Component Index</title>
+    <link rel="stylesheet" type="text/css" href="/node_modules/normalize.css/normalize.css" />
+    <style type="text/css">
+        .container {
+            border:1px solid #000;
+            margin:20px auto;
+            max-width:600px;
+            padding:0 20px;
+        }
+        dl {
+            overflow: hidden;
+        }
+        dt {
+            clear:left;
+            float:left;
+            font-weight:bold;
+            width:15px;
+        }
+        dd {
+            float:left;
+            margin-left:10px;
+        }
+        li {
+            margin:0 0 20px;
+        }
+        code {
+            background:#ededed;
+            display:block;
+            padding:5px;
+        }
+        p code {
+            display:inline-block;
+        }
+        form ul {
+            padding-left:0;
+        }
+        form li {
+            list-style:none;
+            padding-left:20px;
+            position:relative;
+        }
+        label span {
+            color:#999;
+            font-style:italic;
+        }
+        input {
+            left:0;
+            position: absolute;
+            top:2px;
+        }
+        form ul + code {
+            margin-bottom:20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Joose Component Index</h1>
+        <p>So far <a href="#support">support is IE9&plus;</a></p>
+        <p>The plan is for this to be a list of JavaScript components I have written from scratch that are accessible to me and of course others for reference / use and to show off my <strong>native</strong> JavaScript skills. I would also like to make require integration possible in future, so they can be loaded asynchronously to improve performance.</p>
+        <p>This page is not meant to be pretty; this repository is all about JavaScript. It is simply used as introduction, a list of components, and a place for me to test code in a browser.</p>
+        <p>I have included the normalize css reset as I have not used it before, and I believe it is a widely-used asset so it should work harmoniously with people should they choose to use this library and its components.</p>
+        <section>
+            <h2>Support</h2>
+            <p>So far this library is believed to be IE9+ friendly.</p>
+            <ul>
+                <li><code>previousElementSibling</code></li>
+            </ul>
+        </section>
+        <section>
+            <h2>Custom Joose Component Library Selector</h2>
+            <p>Here you can decide which items you want to include in your project and generate a package dependency json object so you don't have to faff around doing <code>npm install</code> for each one.</p>
+            <form>
+                <label>Select all components</label>
+                <input type="checkbox" name="selectAll" />
+                <ul>
+                    <li>
+                        <label for="utils">Include joose-utils <span>A lightweight set of utility functions</span></label>
+                        <input type="checkbox" name="utils" id="utils" data-component-name="joose-utils" />
+                    </li>
+                    <li>
+                        <label for="accordion">Include joose-accordion <span>A lightweight, unstyled accordion component</span></label>
+                        <input type="checkbox" name="accordion" id="accordion" data-component-name="joose-accordion" />
+                    </li>
+                    <li>
+                        <label for="tabs">Include joose-tabs <span>A lightweight, minimal and unstyled tab component</span></label>
+                        <input type="checkbox" name="tabs" id="tabs" data-component-name="joose-tabs" />
+                    </li>
+                    <li>
+                        <label for="storage">Include joose-storage <span>A lightweight storage handling component with helper methods</span></label>
+                        <input type="checkbox" name="storage" id="storage" data-component-name="joose-storage" />
+                    </li>
+                </ul>
+                <code>
+                    {<br />
+                        "devDependencies": {<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;"joose-accordion": "^1.0.0",<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;"joose-storage": "^1.0.0",<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;"joose-tabs": "^1.0.0",<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;"joose-utils": "^1.0.0"<br />
+                        }<br />
+                    }
+                </code>
+            </form>
+        </section>
+    </div>
+    <script type="text/javascript">
+
+        // to be tidied and refactored
+
+        // need to comment, make indent customisable, make select all work and version number configurable
+
+        var componentsObj = {};
+        var jsonObjArea = document.querySelector('form ul + code');
+        var indentation = 4;
+        var indentSpaces = (function() {
+            var html = '';
+            for (var i=0; i<indentation; i++) {
+                html += '&nbsp;';
+            }
+            return html;
+        })();
+        var checkboxes = document.querySelectorAll('form ul input');
+        var noOfCheckboxes = checkboxes.length;
+        var packageJsonObj = {};
+
+        var renderPackageJson = function(componentsObj) {
+            
+            packageJsonObj = {};
+
+            for (var property in componentsObj) {
+                if (componentsObj[property] === true) {
+                    packageJsonObj[property] = "^1.0.0";
+                }
+            }
+
+            var formattedObj = JSON.stringify(packageJsonObj);
+            formattedObj = formattedObj.replace(/\,/g, '<br />'+indentSpaces+indentSpaces);
+            formattedObj = formattedObj.replace(/\{/, '\{<br />'+indentSpaces+indentSpaces);
+            formattedObj = formattedObj.replace(/\}/, '<br />'+indentSpaces+'\}');
+            jsonObjArea.innerHTML = '{<br />'+indentSpaces+'"devDependencies": '+formattedObj+'<br />}';
+        };
+
+        for (var i=0; i<noOfCheckboxes; i++) {
+            var componentId = checkboxes[i].getAttribute('data-component-name');
+            componentsObj[componentId] = false;
+
+            checkboxes[i].addEventListener('click', function() {
+                var thisComponentId = this.getAttribute('data-component-name');
+                if (componentsObj[thisComponentId] === false) {
+                    componentsObj[thisComponentId] = true;
+                } else {
+                    componentsObj[thisComponentId] = false;
+                }
+                renderPackageJson(componentsObj);
+            });
+        }
+
+        renderPackageJson(componentsObj);
+
+    </script>
+</body>
+</html>

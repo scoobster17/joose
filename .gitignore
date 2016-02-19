@@ -13,4 +13,4 @@ node_modules/
 .sass-cache/
 css/
 gulpfile.js
-index.html
+#index.html
